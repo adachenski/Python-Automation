@@ -10,6 +10,10 @@ class Driver:
 
     driver = webdriver.Chrome('utilities\chromedriver.exe')
 
+    def scroll_down_to_element(self,  element):
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
+
     def wait_for_clickable_element_by_xpath(self, xpath):
         try:
             WebDriverWait(self.driver, 10).until(

@@ -28,18 +28,7 @@ def login(context):
     loginPage.login()
 
 
-#
-#
-# @given(u'Scroll down to Utilization and Errors section')
-# def step_impl(context):
-#     wait_for_clickable_element_by_xpath(
-#         "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[1]/td[1]/a")
-#     element = driver.find_element_by_xpath(
-#         "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[1]/td[1]/a")
-#     actions = ActionChains(driver)
-#     actions.move_to_element(element).perform()
-#     #driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-#
+
 #
 # @when(u'Click on random device from "{section}"')
 # def step_impl(context, section):
@@ -62,18 +51,6 @@ def login(context):
 #     time.sleep(2)
 #
 #
-# @when(u'Click on random device from Top 5 CPU Utilization')
-# def step_impl(context):
-#     cpuUtil = random.randint(1,5)
-#     rand = str(cpuUtil)
-#     # wait_for_clickable_element_by_xpath(
-#     #     "//div[@id='utilization-component']/div/div[1]/table/tbody/tr["+str(cpuUtil)+"]/td[1]/a")
-#     context.cpuUtilization = driver.find_element_by_xpath(
-#         "//div[@id='utilization-component']/div/div[1]/table/tbody/tr["+ rand +"]/td[2]").get_attribute('innerHTML')
-#     driver.find_element_by_xpath(
-#         "//div[@id='utilization-component']/div/div[1]/table/tbody/tr["+ rand +"]").click()
-#     #driver.execute_script("arguments[0].click();", element) --> we can execute script if element is nested and not clickable
-#
 #
 # @when(u'Open Device Details and Verify CPU Utilization value')
 # def verify_cpu_utilization(context):
@@ -93,9 +70,6 @@ def login(context):
 # def step_impl(context):
 #     wait_for_visible_element_by_id("d3Graph")
 #     print("========    Device is shown on Explorer page  ========")
-#
-#
-
 #
 #
 # @then(u'I close the browser')
