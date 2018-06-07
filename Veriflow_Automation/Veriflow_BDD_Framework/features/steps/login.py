@@ -28,6 +28,11 @@ def login(context):
     loginPage.login()
 
 
+@then(u'I close the browser')
+def step_impl(contex):
+    loginPage.close_browser()
+
+
 
 #
 # @when(u'Click on random device from "{section}"')
@@ -49,37 +54,6 @@ def login(context):
 #     driver.find_element_by_xpath(
 #         "//div[@id='utilization-component']/div/div["+ y +"]/table/tbody/tr[" + rand + "]").click()
 #     time.sleep(2)
-#
-#
-#
-# @when(u'Open Device Details and Verify CPU Utilization value')
-# def verify_cpu_utilization(context):
-#     print(context.cpuUtilization)
-#     wait_for_clickable_element_by_xpath(
-#         "//li[@class='list-group-item side-bar-item searched']")
-#     driver.find_element_by_xpath(
-#         "//li[@class='list-group-item side-bar-item searched']").click()
-#     driver.find_element_by_xpath(
-#         "//li[@class='list-group-item side-bar-item searched active-item']//button").click()
-#     cpuIdle = driver.find_element_by_xpath(
-#         "//table[@id='device-property-table']//tr/th[text()='System CPU Idle']/../td").get_attribute('innerHTML')
-#     print(cpuIdle)
-#
-#
-# @when(u'Verify that device is shown on Explorer page')
-# def step_impl(context):
-#     wait_for_visible_element_by_id("d3Graph")
-#     print("========    Device is shown on Explorer page  ========")
-#
-#
-# @then(u'I close the browser')
-# def step_impl(contex):
-#     close_browser(driver)
-#
-#
-#
-# def close_browser(web_browser):
-#     time.sleep(3)
-#     web_browser.close()
-#     web_browser.quit()
-#
+
+
+

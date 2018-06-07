@@ -1,10 +1,9 @@
 from driver import Driver
-import random
 
 
 class Resiliency(Driver):
 
-    cpuUtilization = ''
+    random_str = Driver.random_str(1, 6)
 
     def go_to_resiliency(self):
         self.wait_for_visible_element_by_id("d3Graph")
@@ -25,13 +24,15 @@ class Resiliency(Driver):
         # driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 
     def click_on_random_device_from_top_5_util_and_errors(self):
-        cpuUtil = random.randint(1, 5)
-        rand = str(cpuUtil)
+        Driver.cpuUtilization = self.driver.find_element_by_xpath(
+            "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[" + self.random_str + "]/td[2]").get_attribute(
+            'innerHTML')
+        print("cpu utilllll"+self.cpuUtilization)
         # wait_for_clickable_element_by_xpath(
         #     "//div[@id='utilization-component']/div/div[1]/table/tbody/tr["+str(cpuUtil)+"]/td[1]/a")
-        self.cpuUtilization = self.driver.find_element_by_xpath(
-            "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[" + rand + "]/td[2]").get_attribute(
-            'innerHTML')
         self.driver.find_element_by_xpath(
-            "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[" + rand + "]").click()
+            "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[" + self.random_str + "]").click()
         # driver.execute_script("arguments[0].click();", element) --> we can execute script if element is nested and not clickable
+
+
+

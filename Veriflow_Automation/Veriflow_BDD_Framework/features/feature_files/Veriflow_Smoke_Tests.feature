@@ -2,9 +2,9 @@ Feature: Basic Smoke Test
 
   Scenario: Verify User Login
     Given Open Chrome Browser
-    When Navigate to Veriflow Login page at "https://172.17.10.187"
-    And Enter username "veriflow"
-    And Enter password "veriflow"
+    When Navigate to Veriflow Login page at "https://172.17.9.58"
+    And Enter username "ui-admin-3"
+    And Enter password "ui-admin-123"
     Then Click on Login Tab
 
   Scenario: Verify User can go to Resiliency Page
@@ -15,9 +15,9 @@ Feature: Basic Smoke Test
   Scenario: Verify user can click on random device from Top 5 CPU Utilization section
     Given Scroll down to Utilization and Errors section
     When Click on random device from Top 5 CPU Utilization
-#    And Verify that device is shown on Explorer page
-#    And Open Device Details and Verify CPU Utilization value
-#    Then I close the browser
+    And Verify that device is shown on Explorer page
+    And Open Device Details and Verify CPU Utilization value
+    Then I close the browser
 
   @dontRun
   Scenario Outline: Verify user can click on random device from Utilization and Errors
