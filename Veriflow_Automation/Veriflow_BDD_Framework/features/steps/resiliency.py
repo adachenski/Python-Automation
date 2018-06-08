@@ -21,3 +21,8 @@ def scroll_down(context):
 @when(u'Click on random device from Top 5 CPU Utilization')
 def click_on_random_device(context):
     resiliencyPage.click_on_random_device_from_top_5_util_and_errors()
+
+
+@when(u'Click on random device from "{section}"')
+def step_impl(context, section):
+    resiliencyPage.click_on_random_device_from_section(section)

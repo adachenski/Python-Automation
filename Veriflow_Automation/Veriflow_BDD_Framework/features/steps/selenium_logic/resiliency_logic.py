@@ -3,7 +3,7 @@ from driver import Driver
 
 class Resiliency(Driver):
 
-    random_str = Driver.random_str(1, 6)
+    random_str = Driver.random_str(1, 5)
 
     def go_to_resiliency(self):
         self.wait_for_visible_element_by_id("d3Graph")
@@ -34,5 +34,21 @@ class Resiliency(Driver):
             "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[" + self.random_str + "]").click()
         # driver.execute_script("arguments[0].click();", element) --> we can execute script if element is nested and not clickable
 
-
-
+    def click_on_random_device_from_section(self, section):
+        allSections = ['Top 5 CPU Utilization', 'Top 5 Memory Utilization',
+                       'Top 5 Utilized Interfaces', 'Top 5 CRC Error Count',
+                       'Top 5 (Shortest) Uptime', 'Top 5 (Longest) Uptime']
+        rand = self.random_str
+        print('=============================  ' + section)
+        currentSection = allSections.index(section) + 1
+        print(currentSection)
+        print("=================================")
+        y = str(currentSection)
+        # wait_for_clickable_element_by_xpath(
+        #     "//div[@id='utilization-component']/div/div["+ y +"]/table/tbody/tr[" + x + "]/td[1]/a")
+        Driver.cpuUtilization = self.driver.find_element_by_xpath(
+            "//div[@id='utilization-component']/div/div[1]/table/tbody/tr[" + rand + "]/td[2]").get_attribute(
+            'innerHTML')
+        self.driver.find_element_by_xpath(
+            "//div[@id='utilization-component']/div/div[" + y + "]/table/tbody/tr[" + rand + "]").click()
+        self.wait(2)

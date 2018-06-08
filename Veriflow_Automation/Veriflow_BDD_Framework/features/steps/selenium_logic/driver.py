@@ -44,3 +44,6 @@ class Driver:
         time.sleep(3)
         self.driver.close()
         self.driver.quit()
+
+    def wait(self, sec):
+        time.sleep(sec)
