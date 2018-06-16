@@ -24,7 +24,7 @@ class Driver:
                 EC.element_to_be_clickable((By.XPATH, xpath)))
         except TimeoutException:
             # You can write retry code here
-            print("================== Nasko TimeoutException ==================")
+            print("================== Wait for climbable element by xpath exception ==================")
 
     def wait_for_visible_element_by_id(self, id):
         try:
@@ -32,7 +32,7 @@ class Driver:
                 EC.visibility_of_element_located((By.ID, id)))
         except TimeoutException:
             # You can write retry code here
-            print("================== Nasko TimeoutException ==================")
+            print("================== Wait for visible element by ID exception ==================")
 
     @staticmethod
     def random_str(from_int, to_int):
@@ -45,5 +45,6 @@ class Driver:
         self.driver.close()
         self.driver.quit()
 
-    def wait(self, sec):
+    @staticmethod
+    def wait(sec):
         time.sleep(sec)

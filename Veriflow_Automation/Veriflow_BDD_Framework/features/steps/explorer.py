@@ -23,9 +23,13 @@ def wait_for_graph(context):
     explorerPage.wait_for_graph_on_explorer()
 
 
+@then(u'Click on the Advanced tab at the top left corner')
+def click_on_advanced_tab(context):
+    explorerPage.click_on_advanced()
+
+
 @when(u'Click into the search box and enter "{query}"')
 def enter_query_into_search_box(context, query):
-    explorerPage.wait(1)
     explorerPage.enter_query_into_search_box(query)
 
 

@@ -26,13 +26,18 @@ class Explorer(Driver):
         self.driver.find_element_by_xpath("//button[@data-load='flow']").click()
 
     def enter_query_into_search_box(self, query):
-        self.wait(3)
+        self.wait(2)
         if self.count == 1:
-            self.driver.find_element_by_xpath("//form[@id='search-container']/div/textarea").send_keys(query)
+            self.driver.find_element_by_xpath("//div[@id='search-field-pane']/div/div/div/textarea").send_keys(query)
             self.count += 1
         else:
-            self.driver.find_element_by_xpath("//form[@id='search-container']/div/div/textarea").clear()
-            self.driver.find_element_by_xpath("//form[@id='search-container']/div/div/textarea").send_keys(query)
+            self.driver.find_element_by_xpath("//div[@id='search-field-pane']/div/div/div/div/textarea").clear()
+            self.driver.find_element_by_xpath("//div[@id='search-field-pane']/div/div/div/div/textarea").send_keys(query)
 
     def execute_query(self):
         self.driver.find_element_by_id("btn-network-search").click()
+
+    def click_on_advanced(self):
+        self.wait_for_visible_element_by_id("left-bar")
+        self.wait(1)
+        self.driver.find_element_by_xpath("//li[@id='search-field-tab']").click()
