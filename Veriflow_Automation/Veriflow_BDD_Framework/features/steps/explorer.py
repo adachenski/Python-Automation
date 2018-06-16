@@ -38,6 +38,6 @@ def execute_query(context):
     explorerPage.execute_query()
 
 
-@then(u'Verify the query')
-def verify_query(context):
-    explorerPage.wait(1)
+@then(u'Verify "{paths}" and "{devices}" returned')
+def verify_query(context, paths, devices):
+    explorerPage.verify_devices_paths(paths, devices)

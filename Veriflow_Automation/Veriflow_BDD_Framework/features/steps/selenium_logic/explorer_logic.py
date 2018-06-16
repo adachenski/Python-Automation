@@ -26,7 +26,6 @@ class Explorer(Driver):
         self.driver.find_element_by_xpath("//button[@data-load='flow']").click()
 
     def enter_query_into_search_box(self, query):
-        self.wait(2)
         if self.count == 1:
             self.driver.find_element_by_xpath("//div[@id='search-field-pane']/div/div/div/textarea").send_keys(query)
             self.count += 1
@@ -41,3 +40,15 @@ class Explorer(Driver):
         self.wait_for_visible_element_by_id("left-bar")
         self.wait(1)
         self.driver.find_element_by_xpath("//li[@id='search-field-tab']").click()
+
+    def verify_devices_paths(self, devices, paths):
+        self.wait(2)
+        paths_returned = self.driver.find_element_by_xpath("//li[@id='flow-tab-nav']/a").text
+        devices_returned = self.driver.find_element_by_xpath("//li[@id='device-tab-nav']/a").text
+
+        if paths_returned == paths and devices_returned == devices:
+            print("Paths and Devices OK")
+        else:
+            print("Selenium VS Veriflow app result: " + devices_returned + " NOT " + devices)
+            print("Selenium VS Veriflow app result: " + paths_returned + " NOT " + paths)
+            raise Exception("Devices or Flow Paths values mismatch")
